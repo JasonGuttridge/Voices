@@ -1,0 +1,50 @@
+// Place all the styles related to the Users controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.register{
+    text-align: center;
+}
+.error{
+    color: red;
+}
+.link{
+    text-align: right;
+}
+.userLogo{
+    margin-left: 50px;
+    display: inline-block;
+}
+.userNav{
+    display: inline-block;
+    vertical-align: top;
+    margin-left: 500px;
+}
+.createMessage{
+    margin-left: 50px;
+    display:inline-block;
+}
+h3{
+    text-shadow: 2px 2px 5px black;
+    color: rgb(0, 119, 255);
+    font-weight: 900;
+    font-style: italic;
+    font-size: 50px;
+}
+.message{
+    height: 100px;
+    width: 300px;
+}
+.userMessageBoardTitle{
+    display:inline-block;
+    vertical-align: top;
+    margin-left: 50px;
+}
+.userMessageBoard{
+    border-style: solid;
+    border-width: 2px;
+    margin-right: 50px;
+    padding: 10px;
+}
+.email{
+    width:250px;
+}

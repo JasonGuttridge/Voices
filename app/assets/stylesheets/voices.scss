@@ -1,0 +1,42 @@
+// Place all the styles related to the Voices controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.logo{
+    margin-left: 50px;
+    display: inline-block;
+}
+.nav{
+    display: inline-block;
+    vertical-align: top;
+    margin-left: 700px;
+}
+.background{
+    background-image: url('FrontPagePicture.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.missionStatement{
+    text-align: center;
+}
+.statement{
+    margin-left: 300px;
+    margin-right: 300px;
+}
+li{
+    display: inline;
+}
+h1{
+    text-shadow: 2px 2px 5px black;
+    color: rgb(0, 119, 255);
+    font-weight: 900;
+    font-style: italic;
+    font-size: 100px;
+}
+a{
+    text-decoration: underline;
+    margin-right: 10px;
+}
+p{
+    color: rgb(0, 119, 255);
+    font-style: italic;
+}

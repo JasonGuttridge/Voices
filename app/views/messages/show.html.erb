@@ -1,0 +1,27 @@
+<p class='link'><a href='/messages'>Message Board</a> | <%= link_to 'Log Out', destroy_sessions_path(), :method => :delete %> | <a href='/users/<%=currentUser.id%>'>My Profile</a></p>
+<div class='messageHeader'>
+<h3>Posted by: <%=@message.user.firstName%> <%=@message.user.lastName%></h3>
+<p><%=@message.content%></p>
+</div>
+<div class='comments'>
+    <% @comments.each do |comment| %>
+        <p>Posted by: <%=comment.user.firstName%> <%=comment.user.lastName%></p>
+        <p><%=comment.content%></p>
+        <% if comment.user.id == currentUser.id%>
+            <p><%= link_to 'Delete Comment', destroy_comments_path(id: comment.id), :method => :delete %></p>
+        <% end %>
+    <% end %>
+    <form action="/comments" method="post">
+        <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+        <input type="hidden" name="comment[user_id]" value="<%= currentUser.id %>">
+        <input type="hidden" name="comment[message_id]" value="<%= @message.id %>">
+        <p>Comment: <input type="text" name="comment[content]" placeholder='Enter content here.'></p>
+        <p><input type='submit' value='Submit Comment'></p>
+    </form>
+    <% if flash[:commentErrors] %>
+        <h3>Issues</h3>
+        <% flash[:commentErrors].each do |error| %>
+        <p class='error'><%=error%></p>
+        <% end %>
+    <% end %>
+</div>

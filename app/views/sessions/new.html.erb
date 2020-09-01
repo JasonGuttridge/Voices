@@ -1,0 +1,17 @@
+<% if flash[:success] %>
+    <p class='error'><%=flash[:success]%></p>
+<% end %>
+<p class='link'><%= link_to 'Home', index_voices_path(), :method => :get %> | <%= link_to 'Register', new_users_path(), :method => :get %></p>
+<div class='login'>
+<h1>Login</h1>
+    <form action="/sessions" method="post">
+        <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+        <p>Email: <input type="text" name="user[email]" placeholder='Email'></p>
+        <p>Password: <input type="password" name="user[password]" placeholder='Password'></p>
+        <p><input type='submit' value='Login'></p>
+    </form>
+    <% if flash[:loginErrors] %>
+        <h3>Issues</h3>
+        <p class='error'><%=flash[:loginErrors]%></p>
+    <% end %>
+</div>

@@ -1,0 +1,15 @@
+<p class='link'><a href='/users/<%=currentUser.id%>'>My Profile</a> | <%= link_to 'Log Out', destroy_sessions_path(), :method => :delete %></p>
+<div class='messageBoardTitle'>
+    <h1>Message Board</h1>
+</div>
+<div class='messageBoard'>
+    <% @messages.each do |message| %>
+        <p>Posted by: <%=message.user.firstName%> <%=message.user.lastName%></p>
+        <p><a class='message' href='/messages/<%=message.id%>'><%=message.content%></a><%=message.comments.count%> Comments</p>
+    <% end %>
+    <% @userMessages.each do |message| %>
+            <p>Posted By: <%=message.user.firstName%> <%=message.user.lastName%></p>
+            <p><a class='message' href='/messages/<%=message.id%>'><%=message.content%></a> <%=message.comments.count%> Comments</p>
+            <p class='deleteMessage'><%= link_to 'Delete Message', destroy_messages_path(id: message.id), :method => :delete %></p>
+        <% end %>
+</div>

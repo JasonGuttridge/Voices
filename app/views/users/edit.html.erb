@@ -1,0 +1,10 @@
+<p class='link'><a href='/users/<%=currentUser.id%>'>My Profile</a> | <%= link_to 'Log Out', destroy_sessions_path(), :method => :delete %></p>
+<h1>Edit User Information</h1>
+<form action="/users/<%=currentUser.id%>" method="post">
+        <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+        <input type="hidden" name="_method" value="patch">
+        <p>First Name: <input type="text" name="user[firstName]" value="<%=currentUser.firstName%>"></p>
+        <p>Last Name: <input type="text" name="user[lastName]" value="<%=currentUser.lastName%>"></p>
+        <p>Email: <input class='email' type="email" name="user[email]" value="<%=currentUser.email%>"></p>
+        <p><input type='submit' value='Update Information'></p>
+    </form>

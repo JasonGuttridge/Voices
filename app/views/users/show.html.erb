@@ -1,0 +1,27 @@
+<div class='userLogo'>
+    <h1>Voices</h1>
+    <p>Where you have a voice!</p>
+</div>
+<div class='userNav'>
+    <ul>
+        <li><%= link_to 'Log Out', destroy_sessions_path(), :method => :delete %></li>
+        <li><a href="/users/<%=currentUser.id%>/edit">Update Profile</a></li>
+        <li><a href="/messages">Message Board</a></li>
+    </ul>
+    <h3><%=currentUser.firstName%> <%=currentUser.lastName%></h3>
+</div>
+<div class='createMessage'>
+    <h3>Create Message</h3>
+    <form action="/messages" method="post">
+        <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+        <input type='hidden' name='message[user_id]' value='<%=currentUser.id%>'>
+        <p>Message: <input class='message' type="text" name="message[content]" placeholder='Enter content here.'></p>
+        <p><input type='submit' value='Submit Message'></p>
+    </form>
+    <% if flash[:messageErrors] %>
+        <h3>Issues</h3>
+        <% flash[:messageErrors].each do |error| %>
+        <p class='error'><%=error%></p>
+        <% end %>
+    <% end %>
+</div>
