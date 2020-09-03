@@ -25,3 +25,12 @@
         <% end %>
     <% end %>
 </div>
+<div class='userMessageBoardTitle'>
+    <h3>Messages Followed</h3>
+</div>
+<div class='userMessageBoard'>
+    <% @userFollows.each do |follow| %>
+    <p><a href='/messages/<%=follow.message.id%>'><%=follow.message.content%></a></p>
+    <a><%= link_to 'Stop Following', destroy_follows_path(user_id: follow.user.id,message_id: follow.message.id), :method => :delete %></a>
+    <% end %>
+</div>
