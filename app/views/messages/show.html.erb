@@ -4,6 +4,14 @@
 <p><%=@message.content%></p>
 </div>
 <div class='comments'>
+        <% unless @follow %>
+        <form class='followPost' action="/follows" method="post">
+            <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+            <input type="hidden" name="follow[user_id]" value="<%= currentUser.id %>">
+            <input type="hidden" name="follow[message_id]" value="<%= @message.id %>">
+            <p><input type='submit' value='Follow Post'></p>
+        </form>
+        <% end %>
     <% @comments.each do |comment| %>
         <p>Posted by: <%=comment.user.firstName%> <%=comment.user.lastName%></p>
         <p><%=comment.content%></p>
