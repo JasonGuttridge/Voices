@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   delete 'messages/:id'=>'messages#destroy', as: 'destroy_messages'
 
   post 'follows'=>'follows#create', as: 'create_follows'
+  delete 'follows/:id'=>'follows#destroy', as: 'destroy_follows'
 
   get 'users/new'=>'users#new', as: 'new_users'
   post 'users'=>'users#create'
