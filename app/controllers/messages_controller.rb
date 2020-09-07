@@ -1,4 +1,5 @@
 class MessagesController < ApplicationController
+  before_action :requireLogin
   def index
     @messages = Message.where.not(user_id: currentUser.id)
     @userMessages = Message.where(user_id: currentUser.id)
@@ -21,6 +22,7 @@ class MessagesController < ApplicationController
   def show
     @message = Message.find(params[:id])
     @comments = Comment.where(message_id: params[:id])
+    @follow = Follow.find_by(user_id: currentUser.id,message_id: @message.id)
   end
 
   def edit

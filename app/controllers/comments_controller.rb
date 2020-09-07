@@ -1,4 +1,5 @@
 class CommentsController < ApplicationController
+  before_action :requireLogin
   def index
   end
 

@@ -1,4 +1,5 @@
 class SessionsController < ApplicationController
+  before_action :requireLogin, except: [:new, :create]
   def index
   end
 

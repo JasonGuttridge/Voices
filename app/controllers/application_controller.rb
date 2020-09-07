@@ -6,4 +6,9 @@ class ApplicationController < ActionController::Base
     User.find(session[:id]) if session[:id]
   end
   helper_method :currentUser
+  def requireLogin
+    unless currentUser
+      redirect_to '/'
+    end
+  end
 end
