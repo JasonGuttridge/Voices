@@ -1,4 +1,5 @@
 class FollowsController < ApplicationController
+  before_action :requireLogin
   def index
   end
 
@@ -7,7 +8,7 @@ class FollowsController < ApplicationController
 
   def create
     Follow.create(followParams)
-    redirect_to '/messages'
+    redirect_to "/users/#{currentUser.id}"
   end
 
   def show
@@ -20,6 +21,9 @@ class FollowsController < ApplicationController
   end
 
   def destroy
+    @follow = Follow.find_by(user_id: params[:user_id], message_id: params[:message_id])
+    @follow.destroy
+    redirect_to "/users/#{currentUser.id}"
   end
   private
   def followParams
