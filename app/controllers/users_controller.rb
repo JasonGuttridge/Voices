@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  before_action :requireUser, only: [:show]
+  before_action :requireLogin, except: [:new, :create]
   def index
   end
 
@@ -18,8 +20,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    @myMessages = Message.where(user_id: currentUser.id)
-    @userMessages = Follow.where(user_id: currentUser.id)
+    @userFollows = Follow.where(user_id: currentUser.id)
   end
 
   def edit
