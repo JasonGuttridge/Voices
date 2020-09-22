@@ -1,2 +1,1 @@
-#Voices
 This is a website that allows users to voice their opinion and communicate with other users about that opinion.
